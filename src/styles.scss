@@ -1,3 +1,6 @@
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 * {
   margin: 0;
   padding: 0;
@@ -5,11 +8,7 @@
 }
 
 body {
-  font-family: Arial sans-serif;
-  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   /*background: linear-gradient(#f6e2f4, #f59abf);*/
-  background: linear-gradient(#f6e2f4, #eebacf);
+  background: linear-gradient(#f6e2f4, #eebacf) !important;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
