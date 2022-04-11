@@ -1,0 +1,248 @@
+<header>
+  <div class="top">
+    <div class="logo">
+      <img src="../../../assets/images/pngwing.com.png" alt="Логотип">
+      <div>
+        <p>AMI </p>
+        <p>BEAUTY SPACE</p>
+      </div>
+    </div>
+  </div>
+  <nav class="menu">
+    <ul>
+      <li><a href="">Головна</a></li>
+      <li><a href="#about">Про Нас</a></li>
+      <li><a href="#services">Полуги</a></li>
+      <li><a href="#masters">Майстри</a></li>
+      <li><a href="">Запис</a></li>
+      <li><a href="#contacts">Контакти</a></li>
+    </ul>
+  </nav>
+  <div class="banner">
+    <div class="text-banner">
+      <p>
+        Створюємо тренди
+      </p>
+      <p>
+        Ми
+        <span>
+        дотримуємося трендів
+      </span>
+      </p>
+    </div>
+  </div>
+</header>
+<section id="about" class="about">
+  <div class="about-text">
+    <p>
+      Про нас
+    </p>
+    <p>Салон краси «AMI BEAUTY SPACE» надає своїм клієнтам професійні послуги, де ціна відповідає якості, кожен майстер,
+      не залежно чи це перукар, чи майстер манікюру, візажист – знає свою справу. Наш індивідуальний підхід до клієнтів
+      оцінить кожен, хто завітає до нас.
+    </p>
+    <p>
+      Ви можете бути впевнені в тому, що майстер зробить все можливе для втілення
+      Вашого бажання і надасть послугу на найвищому рівні.
+    </p>
+  </div>
+  <div class="about-image">
+    <img src="../../../assets/images/salon-design-1.jpg" alt="About">
+  </div>
+</section>
+<section id="services" class="typeOfServices">
+  <div class="typeOfServices-title">Наші послуги</div>
+  <nav class="typeOfServices-menu">
+    <ul class="type-of-services-list">
+      <li
+        [class.active-service-tab]="activeServiceTab === 'nail'"
+        (click)="activeServiceTab = 'nail'">
+        Манікюр
+      </li>
+      <li
+        [class.active-service-tab]="activeServiceTab === 'hair'"
+        (click)="activeServiceTab = 'hair'">
+        Зачіски
+      </li>
+      <li
+        [class.active-service-tab]="activeServiceTab === 'make-up'"
+        (click)="activeServiceTab = 'make-up'">
+        Макіяж
+      </li>
+    </ul>
+  </nav>
+  <ng-container [ngSwitch]="activeServiceTab">
+    <div
+      *ngSwitchCase="'nail'"
+      class="nail">
+      <div class="services">
+        <img src="../../../assets/images/aparatmanikur.jpg" alt="nails">
+        <div class="service-title">Апаратний манікюр</div>
+        <div class="services-description">спеціальна машинка дозволить вам швидко та безпечно зняти старе покриття, яке
+          залишилося від попереднього манікюру
+        </div>
+      </div>
+      <div class="services">
+        <img src="../../../assets/images/clasick_nail.jpg" alt="nails">
+        <div class="service-title">Класичний манікюр</div>
+        <div class="services-description">був і залишається найпопулярнішим серед усіх варіантів манікюру</div>
+      </div>
+      <div class="services">
+        <img src="../../../assets/images/spa_nail.jpg" alt="nails">
+        <div class="service-title">СПА манікюр</div>
+        <div class="services-description">завдяки ванночкам, спеціальним зволожувальним маскам, пілінгу та збагаченні
+          шкіри корисними компонентами
+        </div>
+      </div>
+      <div class="services">
+        <img src="../../../assets/images/eur_nail.jpg" alt="nails">
+        <div class="service-title">Європейський манікюр</div>
+        <div class="services-description">узори на нігтях та нанесення «під кутикулу», виглядаэ охайно та красиво</div>
+      </div>
+    </div>
+    <div
+      *ngSwitchCase="'hair'"
+      class="hair">
+      <div class="services">
+        <img src="../../../assets/images/wedding_hair.jpg" alt="hair">
+        <div class="service-title">Весільна</div>
+        <div class="services-description">весільна зачіска, в комплексі з весільним макіяжем, є основною складовою образу
+          нареченої
+        </div>
+      </div>
+      <div class="services">
+        <img src="../../../assets/images/ukladka_hair.jpg" alt="hair">
+        <div class="service-title">Укладка</div>
+        <div class="services-description">надання волоссю певної форми, об’єму та його завивання на нетривалий час.
+        </div>
+      </div>
+      <div class="services">
+        <img src="../../../assets/images/kose_hair.jpg" alt="hair">
+        <div class="service-title">Плетіння</div>
+        <div class="services-description">різні стилістичні варіанти плетіння, при яких пасми вролосся сплітаються разом
+        </div>
+      </div>
+      <div class="services">
+        <img src="../../../assets/images/brash_hair.png" alt="hair">
+        <div class="service-title">Брашинг</div>
+        <div class="services-description">виглядає натурально і навіть трохи недбало</div>
+      </div>
+    </div>
+    <div
+      *ngSwitchCase="'make-up'"
+      class="make">
+      <div class="services">
+        <img src="../../../assets/images/make-up.jpg" alt="make-1">
+        <div class="service-title">Вечірній</div>
+        <div class="services-description">яскравіше звичайного, повинен виконуватися бездоганно</div>
+      </div>
+      <div class="services">
+        <img src="../../../assets/images/wedddddd.jpg" alt="make-2">
+        <div class="service-title">Весільний</div>
+        <div class="services-description">відрізняється романтичністю, підкресленою жіночністю</div>
+      </div>
+      <div class="services">
+        <img src="../../../assets/images/make-day.jpg" alt="make-3">
+        <div class="service-title">Денний</div>
+        <div class="services-description">дозволяє без яскравих фарб розставити потрібні акценти</div>
+      </div>
+      <div class="services">
+        <img src="../../../assets/images/evening-make.jpg" alt="make-4">
+        <div class="service-title">Випускний</div>
+        <div class="services-description">підкреслює красу наряду та задає святковий настрій</div>
+      </div>
+    </div>
+  </ng-container>
+</section>
+<section id="masters" class="masters">
+  <div class="masters-title">Наші майстри</div>
+  <div class="masters-image">
+    <div class="master-make">
+      <div class="master-make-photo">
+        <img class=" master-make-photo-box" src="../../../assets/images/olya.jpg" alt="Про нас - макіяж">
+      </div>
+      <div class=" master-information">
+        Болдуженко Оля
+        <span>візажист</span>
+        <ul>
+          <li>2 роки практики</li>
+          <li>може виконати макіяж будь-якої складності</li>
+          <li>уміння створювати образ</li>
+          <li>робота з люксовою кометикою</li>
+        </ul>
+        <button class="master-record">Записатись</button>
+      </div>
+    </div>
+    <div class="master-hair">
+      <div class="master-hair-photo">
+        <img class="master-hair-photo-box" src="../../../assets/images/olyaPriz.jpg" alt="Про нас - зачіска">
+      </div>
+      <div class="master-information">
+        Приз Оля
+        <span>стиліст</span>
+        <ul>
+          <li>7 років практики</li>
+          <li>зачіски на будь-який смак</li>
+          <li>підбір догляду за волосям</li>
+        </ul>
+        <button class="master-record" (click)="openRecordDialog()">Записатись</button>
+      </div>
+    </div>
+    <div class="master-nail">
+      <div class="master-nail-photo">
+        <img class="master-nail-photo-box" src="../../../assets/images/master-nail.jpg" alt="Про нас - манікюр">
+      </div>
+      <div class=" master-information">
+        Сазанова Альона
+        <span>майстер манікюру</span>
+        <ul>
+          <li>5 років практики</li>
+          <li>SPA процедури по догляду за шкірою рук</li>
+          <li>дизайн та нарощування нігтів</li>
+          <li>гель-лаки відомих світових брендів</li>
+        </ul>
+        <button class="master-record">Записатись</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="contacts" class="contact">
+  <div class="contact-title">Контакти</div>
+  <div class="contacts">
+    <div class="contact-information">
+      <div class="contact-text">Адреса:</div>
+      <span>місто Черкаси, вул.Остафія Дашковича, 3</span>
+      <div class="contact-text">Телефон та email:</div>
+      <span>+38(068)569-4759</span>
+      <br/>
+      <span>ami.beauty.space@gmail.com</span>
+      <div class="text-icon-insta">
+        <div class="contact-text">Соціальні мережі:</div>
+        <a href="https://www.instagram.com/ami.beauty.space/?hl=uk"><img
+          src="../../../assets/images/instagram_f_icon-icons.com_65485.png" alt="instagram"></a>
+      </div>
+    </div>
+    <div class="address">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2594.0275671789377!2d32.06275081569529!3d49.44619597934936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d14b7d310dadf7%3A0xf5b4cffec0bc3648!2z0LLRg9C70LjRhtGPINCe0YHRgtCw0YTRltGPINCU0LDRiNC60L7QstC40YfQsCwgMywg0KfQtdGA0LrQsNGB0LgsINCn0LXRgNC60LDRgdGM0LrQsCDQvtCx0LvQsNGB0YLRjCwgMTgwMDA!5e0!3m2!1suk!2sua!4v1645537533736!5m2!1suk!2sua"
+        style="border:0;" allowfullscreen="" loading="lazy">
+
+      </iframe>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-logo">
+    <div class="logo">
+      <img src="../../../assets/images/pngwing.com.png" alt="Логотип">
+      <div>
+        <p>AMI </p>
+        <p>BEAUTY SPACE</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-text">Політика конфіденційності</div>
+  <ul class="footer-tel">
+    <li><a href="tel:+38(068)569-4759">+38(068)569-4759</a></li>
+  </ul>
+</footer>

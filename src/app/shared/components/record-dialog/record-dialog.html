@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Запис</h1>
+<div mat-dialog-content>
+  <form [formGroup]="recordForm" class="w-50 m-auto">
+    <mat-form-field class="w-100">
+      <input matInput formControlName="phone" placeholder="Телефон" class="w-100">
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <input matInput formControlName="clientName" placeholder="Ім'я та Прізвище" class="w-100">
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <input matInput formControlName="email" placeholder="Електрона адреса" class="w-100">
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <input matInput formControlName="recordMaster" placeholder="Майстер" class="w-100">
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <input matInput formControlName="recordCategory" placeholder="Категорія" class="w-100">
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <input matInput formControlName="recordService" placeholder="Послуга" class="w-100">
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <input matInput formControlName="recordSchedule" placeholder="Час" class="w-100">
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <input matInput formControlName="recordData" placeholder="Дата" class="w-100">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button color="primary" [mat-dialog-close]="">Закрити</button>
+  <button mat-button color="accent" [mat-dialog-close]="recordForm.getRawValue()">Записатися</button>
+</div>
