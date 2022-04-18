@@ -52,53 +52,6 @@ export class MainComponent implements OnInit {
     this.initSchedules();
   }
 
-  initClients(): void {
-    this.clientService.getClients().subscribe(clients => {
-      this.clients = clients;
-      this.clients.forEach(client => {
-        // console.log(client.clientName)
-      });
-    });
-  }
-
-  initMasters(): void {
-    this.mastersService.getMasters().subscribe(masters => {
-      this.masters = masters;
-      this.masters.forEach(master => {
-        // console.log(master.masterName)
-      });
-    });
-  }
-
-  initCategories(): void {
-    this.categoriesService.getCategories().subscribe(categories => {
-      this.categories = categories;
-      this.categories.forEach(category => {
-        // console.log(category.categoryName)
-      });
-    });
-  }
-
-  initServices(): void {
-    this.servicesService.getServices().subscribe(services => {
-      this.services = services;
-      this.services.forEach(service => {
-        // console.log(service.serviceName)
-      });
-    });
-  }
-
-  initSchedules(): void {
-    this.schedulesService.getSchedules().subscribe(schedules => {
-      this.schedules = schedules;
-      this.schedules.forEach(schedule => {
-        // console.log('she', schedule)
-        // console.log(schedule.scheduleName)
-      });
-    });
-  }
-
-
   openRecordDialog(): void {
     const dialogConfig = new MatDialogConfig();
 
@@ -115,5 +68,51 @@ export class MainComponent implements OnInit {
 
       console.log(date);
     })
+  }
+
+  private initClients(): void {
+    this.clientService.getClients().subscribe(clients => {
+      this.clients = clients;
+      this.clients.forEach(client => {
+        // console.log(client.clientName)
+      });
+    });
+  }
+
+  private initMasters(): void {
+    this.mastersService.getMasters().subscribe(masters => {
+      this.masters = masters;
+      this.masters.forEach(master => {
+        // console.log(master.masterName)
+      });
+    });
+  }
+
+  private initCategories(): void {
+    this.categoriesService.getCategories().subscribe(categories => {
+      this.categories = categories;
+      this.categories.forEach(category => {
+        // console.log(category.categoryName)
+      });
+    });
+  }
+
+  private initServices(): void {
+    this.servicesService.getServices().subscribe(services => {
+      this.services = services;
+      this.services.forEach(service => {
+        // console.log(service.serviceName)
+      });
+    });
+  }
+
+  private initSchedules(): void {
+    this.schedulesService.getSchedules().subscribe(schedules => {
+      this.schedules = schedules;
+      this.schedules.forEach(schedule => {
+        // console.log('she', schedule)
+        // console.log(schedule.scheduleName)
+      });
+    });
   }
 }
