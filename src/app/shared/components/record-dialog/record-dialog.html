@@ -2,32 +2,61 @@
 <div mat-dialog-content>
   <form [formGroup]="recordForm" class="w-50 m-auto">
     <mat-form-field class="w-100">
-      <input matInput formControlName="phone" placeholder="Телефон" class="w-100">
+      <input matInput formControlName="phone" placeholder="Телефон" class="w-100" type="tel">
     </mat-form-field>
     <mat-form-field class="w-100">
       <input matInput formControlName="clientName" placeholder="Ім'я та Прізвище" class="w-100">
     </mat-form-field>
     <mat-form-field class="w-100">
-      <input matInput formControlName="email" placeholder="Електрона адреса" class="w-100">
+      <input matInput formControlName="email" placeholder="Електрона адреса" class="w-100" type="email">
     </mat-form-field>
     <mat-form-field class="w-100">
-      <input matInput formControlName="recordMaster" placeholder="Майстер" class="w-100">
+      <mat-select formControlName="recordMaster" placeholder="Майстер" class="w-100">
+        <mat-option *ngFor="let master of masters" [value]="master.masterId">
+          {{ master.masterName }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field class="w-100">
-      <input matInput formControlName="recordCategory" placeholder="Категорія" class="w-100">
+      <mat-select formControlName="recordCategory" placeholder="Категорія" class="w-100">
+        <mat-option *ngFor="let category of categories | filterCategories: masterCategoryId"
+                    [value]="category.categoryId">
+          {{ category.categoryName }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field class="w-100">
-      <input matInput formControlName="recordService" placeholder="Послуга" class="w-100">
+      <mat-select formControlName="recordService" placeholder="Послуга" class="w-100">
+        <mat-option *ngFor="let service of services | filterServices: recordForm.get('recordCategory')?.value"
+                    [value]="service.serviceId">
+          {{ service.serviceName }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field class="w-100">
-      <input matInput formControlName="recordSchedule" placeholder="Час" class="w-100">
+      <mat-select formControlName="recordSchedule" placeholder="Час" class="w-100">
+        <mat-option *ngFor="let schedule of schedules" [value]="schedule.scheduleId">
+          {{ schedule.scheduleName }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field class="w-100">
-      <input matInput formControlName="recordData" placeholder="Дата" class="w-100">
+      <input matInput [matDatepicker]="picker" [min]="minDate" formControlName="recordDate" (click)="picker.open()"
+             placeholder="Дата" class="w-100">
+      <mat-hint>
+        ДД/ММ/РРРР
+      </mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   </form>
 </div>
 <div mat-dialog-actions align="end">
   <button mat-button color="primary" [mat-dialog-close]="">Закрити</button>
-  <button mat-button color="accent" [mat-dialog-close]="recordForm.getRawValue()">Записатися</button>
+  <button mat-button color="accent"
+          [mat-dialog-close]="recordForm.getRawValue()"
+          [disabled]="recordForm.invalid"
+          >
+    Записатися
+  </button>
 </div>

@@ -2,7 +2,6 @@ header .top {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 
 .logo {
@@ -15,19 +14,17 @@ header .top {
 }
 
 .logo p:first-child {
-  margin: 0;
   padding-left: 10px;
   text-transform: uppercase;
-  font-size: 70px;
+  font-size: 60px;
   color: #000000;
 }
 
 .logo p:last-child {
-  margin: 0;
   padding-left: 10px;
   text-transform: uppercase;
   font-style: italic;
-  font-size: 35px;
+  font-size: 30px;
   color: #000000;
 }
 

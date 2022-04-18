@@ -10,12 +10,12 @@
   </div>
   <nav class="menu">
     <ul>
-      <li><a href="">Головна</a></li>
-      <li><a href="#about">Про Нас</a></li>
-      <li><a href="#services">Полуги</a></li>
-      <li><a href="#masters">Майстри</a></li>
-      <li><a href="">Запис</a></li>
-      <li><a href="#contacts">Контакти</a></li>
+      <li><a role="button" href="">Головна</a></li>
+      <li><a role="button" href="#about">Про Нас</a></li>
+      <li><a role="button" href="#services">Полуги</a></li>
+      <li><a role="button" href="#masters">Майстри</a></li>
+      <li><a role="button" (click)="openRecordDialog()">Записатися</a></li>
+      <li><a role="button" href="#contacts">Контакти</a></li>
     </ul>
   </nav>
   <div class="banner">
@@ -170,7 +170,7 @@
           <li>уміння створювати образ</li>
           <li>робота з люксовою кометикою</li>
         </ul>
-        <button class="master-record">Записатись</button>
+        <button class="master-record" (click)="openRecordDialog()">Записатись</button>
       </div>
     </div>
     <div class="master-hair">
@@ -201,7 +201,7 @@
           <li>дизайн та нарощування нігтів</li>
           <li>гель-лаки відомих світових брендів</li>
         </ul>
-        <button class="master-record">Записатись</button>
+        <button class="master-record" (click)="openRecordDialog()">Записатись</button>
       </div>
     </div>
   </div>
