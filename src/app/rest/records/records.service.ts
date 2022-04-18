@@ -16,4 +16,8 @@ export class RecordsService {
     );
 
   }
+
+  createRecord(record: RecordDto): Observable<RecordDto> {
+    return this.http.post<RecordDto>('http://localhost:8080/api/records', record);
+  }
 }

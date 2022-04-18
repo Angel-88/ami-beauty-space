@@ -12,6 +12,8 @@ import {ServiceDto} from "../../rest/services/service.dto";
 import { SchedulesService } from 'src/app/rest/schedules/schedules.service';
 import {ScheduleDto} from "../../rest/schedules/schedule.dto";
 import * as moment from "moment";
+import { RecordsService } from 'src/app/rest/records/records.service';
+import {RecordDto} from "../../rest/records/record.dto";
 
 @Component({
   templateUrl: './main.html',
@@ -22,6 +24,7 @@ import * as moment from "moment";
     CategoriesService,
     ServicesService,
     SchedulesService,
+    RecordsService,
   ],
 })
 
@@ -41,6 +44,7 @@ export class MainComponent implements OnInit {
     private categoriesService: CategoriesService,
     private servicesService: ServicesService,
     private schedulesService: SchedulesService,
+    private recordService: RecordsService,
   ) {
   }
 
@@ -62,12 +66,17 @@ export class MainComponent implements OnInit {
       services: this.services,
       schedules: this.schedules,
     };
-    this.dialog.open(RecordDialogComponent, dialogConfig).afterClosed().subscribe(res => {
-      console.log(res);
-      const date = moment().format('YYYY-MM-DD');
 
-      console.log(date);
+    this.dialog.open(RecordDialogComponent, dialogConfig).afterClosed().subscribe((record: RecordDto) => {
+      console.log(record);
+
+      record.recordDate = moment(record.recordDate).format('YYYY-MM-DD');
+      this.submitRecord(record);
     })
+  }
+
+  private submitRecord(record: RecordDto): void {
+    this.recordService.createRecord(record).subscribe();
   }
 
   private initClients(): void {
