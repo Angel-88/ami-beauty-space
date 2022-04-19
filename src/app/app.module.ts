@@ -22,7 +22,7 @@ import {BaseInterceptor} from "./rest/interceptors/base-interceptor";
     BrowserAnimationsModule,
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useValue: BaseInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

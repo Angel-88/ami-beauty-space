@@ -17,8 +17,9 @@ app.use('/api', categoryRouter);
 app.use('/api', serviceRouter);
 app.use('/api', scheduleRouter);
 app.use('/api', recordRouter);
-let whitelist = ['http://localhost:4200']
-app.use(cors({
+let whitelist = ['http://localhost:8080']
+app.use(cors(
+  {
     origin: (origin, callback) => {
         // allow requests with no origin
         if(!origin) return callback(null, true);
@@ -28,7 +29,8 @@ app.use(cors({
         }
         return callback(null, true);
     }
-}));
+}
+));
 
 app.listen(PORT, () => console.log(`server started on post ${PORT}`));
 

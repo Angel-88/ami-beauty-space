@@ -1,19 +1,15 @@
-import {Injectable} from "@angular/core";
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
-import {Observable} from "rxjs";
+import { Injectable } from "@angular/core";
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 
-@Injectable({providedIn: 'root'})
+import { Observable } from "rxjs";
+
+@Injectable()
 export class BaseInterceptor implements HttpInterceptor {
-  constructor() {
-  }
+  constructor() {}
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const clone = req.clone({
-      // setHeaders: {
-      //   'Access-Control-Allow-Origin': '*'
-      // }
-      headers: req.headers.set('Access-Control-Allow-Origin','*')
-    })
+    const clone = req.clone();
+
     return next.handle(clone);
   }
-
 }

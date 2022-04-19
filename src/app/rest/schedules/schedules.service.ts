@@ -10,7 +10,7 @@ export class SchedulesService {
   }
 
   getSchedules(): Observable<ScheduleDto[]> {
-    return this.http.get<ScheduleDto[]>('http://localhost:8080/api/schedules').
+    return this.http.get<ScheduleDto[]>('/api/schedules').
       pipe(
         map(schedules => schedules.map(schedule => new ScheduleDto(schedule))),
     );

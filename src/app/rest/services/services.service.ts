@@ -10,7 +10,7 @@ export class ServicesService {
   }
 
   getServices(): Observable<ServiceDto[]> {
-    return this.http.get<ServiceDto[]>('http://localhost:8080/api/services').
+    return this.http.get<ServiceDto[]>('/api/services').
       pipe(
         map(services => services.map(service => new ServiceDto(service))),
     );

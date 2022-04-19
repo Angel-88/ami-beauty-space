@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+
 import {map, Observable} from "rxjs";
+
 import {ClientDto} from "./client.dto";
 
 @Injectable()
@@ -10,7 +12,7 @@ export class ClientsService {
   }
 
   getClients(): Observable<ClientDto[]> {
-    return this.http.get<ClientDto[]>('http://localhost:8080/api/clients').
+    return this.http.get<ClientDto[]>('/api/clients').
       pipe(
         map(clients => clients.map(client => new ClientDto(client))),
     );

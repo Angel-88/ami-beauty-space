@@ -10,7 +10,7 @@ export class RecordsService {
   }
 
   getRecords(): Observable<RecordDto[]> {
-    return this.http.get<RecordDto[]>('http://localhost:8080/api/records').
+    return this.http.get<RecordDto[]>('/api/records').
       pipe(
         map(records => records.map(record => new RecordDto(record))),
     );
@@ -18,6 +18,6 @@ export class RecordsService {
   }
 
   createRecord(record: RecordDto): Observable<RecordDto> {
-    return this.http.post<RecordDto>('http://localhost:8080/api/records', record);
+    return this.http.post<RecordDto>('/api/records', record);
   }
 }
