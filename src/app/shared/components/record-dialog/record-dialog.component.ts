@@ -60,7 +60,7 @@ export class RecordDialogComponent implements OnInit {
 
   private initForm() {
     this.recordForm = this.fB.group({
-      phone: ['+380', [Validators.required]],
+      recordPhone: ['+380', [Validators.required]],
       recordClient: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       recordMaster: ['', [Validators.required]],

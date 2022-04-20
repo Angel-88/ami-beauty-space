@@ -1,6 +1,7 @@
 export class RecordDto {
   recordId!: string;
   recordClient!: string;
+  recordPhone!: string;
   recordMaster!: string;
   recordService!: string;
   recordCategory!: string;

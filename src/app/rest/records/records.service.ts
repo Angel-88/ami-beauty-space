@@ -11,6 +11,7 @@ export class RecordsService {
 
   getRecords(): Observable<RecordDto[]> {
     return this.http.get<RecordDto[]>('/api/records').
+    // return this.http.get<RecordDto[]>('/api/records/da').
       pipe(
         map(records => records.map(record => new RecordDto(record))),
     );

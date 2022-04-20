@@ -2,7 +2,7 @@
 <div mat-dialog-content>
   <form [formGroup]="recordForm" class="w-50 m-auto">
     <mat-form-field class="w-100">
-      <input matInput formControlName="phone" placeholder="Телефон" class="w-100" type="tel">
+      <input matInput formControlName="recordPhone" placeholder="Телефон" class="w-100" type="tel">
     </mat-form-field>
     <mat-form-field class="w-100">
       <input matInput formControlName="recordClient" placeholder="Ім'я та Прізвище" class="w-100">
@@ -52,7 +52,7 @@
   </form>
 </div>
 <div mat-dialog-actions align="end">
-  <button mat-button color="primary" [mat-dialog-close]="">Закрити</button>
+  <button mat-button color="primary" [mat-dialog-close]="false">Закрити</button>
   <button mat-button color="accent"
           [mat-dialog-close]="recordForm.getRawValue()"
           [disabled]="recordForm.invalid"

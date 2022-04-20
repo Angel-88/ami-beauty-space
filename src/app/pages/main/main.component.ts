@@ -14,6 +14,7 @@ import {ScheduleDto} from "../../rest/schedules/schedule.dto";
 import * as moment from "moment";
 import { RecordsService } from 'src/app/rest/records/records.service';
 import {RecordDto} from "../../rest/records/record.dto";
+import {filter} from "rxjs";
 
 @Component({
   templateUrl: './main.html',
@@ -67,7 +68,9 @@ export class MainComponent implements OnInit {
       schedules: this.schedules,
     };
 
-    this.dialog.open(RecordDialogComponent, dialogConfig).afterClosed().subscribe((record: RecordDto) => {
+    this.dialog.open(RecordDialogComponent, dialogConfig).afterClosed()
+      .pipe(filter(Boolean))
+      .subscribe((record: RecordDto) => {
       console.log(record);
 
       record.recordDate = moment(record.recordDate).format('YYYY-MM-DD');
