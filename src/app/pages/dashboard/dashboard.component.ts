@@ -31,7 +31,7 @@ import { ClientVisitsDto } from '../../rest/client-visits/client-visits.dto';
 
 export class DashboardComponent implements OnInit {
   recordsColumns = [
-    'position', 'recordClient', 'recordPhone', 'recordMaster', 'recordCategory', 'recordService',
+    'position', 'recordClient', 'recordPhone', 'recordMaster', 'recordCategory', 'recordService', 'recordPrice',
     'recordSchedule', 'recordDate',
   ];
   records: RecordDto[] = [];

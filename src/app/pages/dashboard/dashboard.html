@@ -114,6 +114,16 @@
           *matCellDef="let element"> {{element.recordCategory}} </td>
       </ng-container>
 
+      <ng-container matColumnDef="recordPrice">
+        <th
+          mat-header-cell
+          *matHeaderCellDef> Ціна
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"> {{element.recordPrice | currency : 'UAH' : 'symbol-narrow' : '1.0-0'}} </td>
+      </ng-container>
+
       <ng-container matColumnDef="recordService">
         <th
           mat-header-cell
