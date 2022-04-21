@@ -1,13 +1,17 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog'
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/core";
+import {MomentDateAdapter} from '@angular/material-moment-adapter';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+
+import * as moment from 'moment';
+
 import {MasterDto} from "../../../rest/masters/master.dto";
 import {CategoryDto} from 'src/app/rest/categories/category.dto';
 import {ServiceDto} from "../../../rest/services/service.dto";
 import {ScheduleDto} from 'src/app/rest/schedules/schedule.dto';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/core";
-import {MomentDateAdapter} from '@angular/material-moment-adapter';
-import * as moment from 'moment';
+
+import { MY_DATE_FORMAT } from '../../constants/constants';
 
 export interface DialogData {
   masters: MasterDto[];
@@ -15,18 +19,6 @@ export interface DialogData {
   services: ServiceDto[];
   schedules: ScheduleDto[];
 }
-
-const MY_DATE_FORMAT = {
-  parse: {
-    dateInput: 'DD/MM/YYYY', // this is how your date will be parsed from Input
-  },
-  display: {
-    dateInput: 'DD/MM/YYYY', // this is how your date will get displayed on the Input
-    monthYearLabel: 'MMMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY'
-  }
-};
 
 @Component({
   templateUrl: './record-dialog.html',

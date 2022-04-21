@@ -60,7 +60,8 @@ export class MainComponent implements OnInit {
   openRecordDialog(): void {
     const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.width = '50%';
+    dialogConfig.width = '30%';
+    dialogConfig.minWidth = '500px';
     dialogConfig.data = {
       masters: this.masters,
       categories: this.categories,
@@ -83,48 +84,22 @@ export class MainComponent implements OnInit {
   }
 
   private initClients(): void {
-    this.clientService.getClients().subscribe(clients => {
-      this.clients = clients;
-      this.clients.forEach(client => {
-        // console.log(client.clientName)
-      });
-    });
+    this.clientService.getClients().subscribe(clients => this.clients = clients);
   }
 
   private initMasters(): void {
-    this.mastersService.getMasters().subscribe(masters => {
-      this.masters = masters;
-      this.masters.forEach(master => {
-        // console.log(master.masterName)
-      });
-    });
+    this.mastersService.getMasters().subscribe(masters => this.masters = masters);
   }
 
   private initCategories(): void {
-    this.categoriesService.getCategories().subscribe(categories => {
-      this.categories = categories;
-      this.categories.forEach(category => {
-        // console.log(category.categoryName)
-      });
-    });
+    this.categoriesService.getCategories().subscribe(categories => this.categories = categories);
   }
 
   private initServices(): void {
-    this.servicesService.getServices().subscribe(services => {
-      this.services = services;
-      this.services.forEach(service => {
-        // console.log(service.serviceName)
-      });
-    });
+    this.servicesService.getServices().subscribe(services => this.services = services);
   }
 
   private initSchedules(): void {
-    this.schedulesService.getSchedules().subscribe(schedules => {
-      this.schedules = schedules;
-      this.schedules.forEach(schedule => {
-        // console.log('she', schedule)
-        // console.log(schedule.scheduleName)
-      });
-    });
+    this.schedulesService.getSchedules().subscribe(schedules => this.schedules = schedules);
   }
 }

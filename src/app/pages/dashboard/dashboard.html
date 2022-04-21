@@ -1,47 +1,355 @@
-<table mat-table [dataSource]="records" class="mat-elevation-z8 w-100">
+<div class="dashboard-container p-3 w-100">
+  <h1 class="mb-3">Записи</h1>
+  <div class="row mb-3 ">
+    <div class="col-4">
+      <input
+        matInput
+        class="w-100 p-2"
+        type="text"
+        (keydown.enter)="initRecords()"
+        (ngModelChange)="onRecordSearchChanged()"
+        placeholder="Пошук клієнта"
+        [(ngModel)]="clientName">
+    </div>
+    <div class="col-4">
+      <input
+        matInput
+        class="w-100 p-2"
+        type="text"
+        (keydown.enter)="initRecords()"
+        (ngModelChange)="onRecordSearchChanged()"
+        placeholder="Пошук майстра"
+        [(ngModel)]="masterName">
+    </div>
+    <div class="col-2">
+      <input
+        matInput
+        [matDatepicker]="startDatePicker"
+        [(ngModel)]="recordStartDate"
+        (click)="startDatePicker.open()"
+        (dateChange)="initRecords()"
+        placeholder="Початкова дата"
+        class="w-100 p-2">
+      <mat-hint>
+        ДД/ММ/РРРР
+      </mat-hint>
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="startDatePicker">
+      </mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker></mat-datepicker>
+    </div>
+    <div class="col-2">
+      <input
+        matInput
+        [matDatepicker]="endDatePicker"
+        [(ngModel)]="recordEndDate"
+        (click)="endDatePicker.open()"
+        (dateChange)="initRecords()"
+        placeholder="Кінцева дата"
+        class="w-100 p-2">
+      <mat-hint>
+        ДД/ММ/РРРР
+      </mat-hint>
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="endDatePicker">
+      </mat-datepicker-toggle>
+      <mat-datepicker #endDatePicker></mat-datepicker>
+    </div>
+  </div>
+  <div class="table-container mat-elevation-z8 w-100 mb-5">
+    <table
+      mat-table
+      [dataSource]="records"
+      class="w-100">
 
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> №</th>
-    <td mat-cell *matCellDef="let element; let idx = index"> {{idx + 1}} </td>
-  </ng-container>
+      <ng-container matColumnDef="position">
+        <th
+          mat-header-cell
+          *matHeaderCellDef> №
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element; let idx = index"> {{idx + 1}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="recordClient">
-    <th mat-header-cell *matHeaderCellDef> Клієнт</th>
-    <td mat-cell *matCellDef="let element"> {{element.recordClient}} </td>
-  </ng-container>
+      <ng-container matColumnDef="recordClient">
+        <th
+          mat-header-cell
+          *matHeaderCellDef> Клієнт
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"> {{element.recordClient}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="recordPhone">
-    <th mat-header-cell *matHeaderCellDef> Телефон</th>
-    <td mat-cell *matCellDef="let element"> {{element.recordPhone}} </td>
-  </ng-container>
+      <ng-container matColumnDef="recordPhone">
+        <th
+          mat-header-cell
+          *matHeaderCellDef> Телефон
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"> {{element.recordPhone}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="recordMaster">
-    <th mat-header-cell *matHeaderCellDef> Майстер</th>
-    <td mat-cell *matCellDef="let element"> {{element.recordMaster}} </td>
-  </ng-container>
+      <ng-container matColumnDef="recordMaster">
+        <th
+          mat-header-cell
+          *matHeaderCellDef> Майстер
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"> {{element.recordMaster}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="recordCategory">
-    <th mat-header-cell *matHeaderCellDef> Категорія</th>
-    <td mat-cell *matCellDef="let element"> {{element.recordCategory}} </td>
-  </ng-container>
+      <ng-container matColumnDef="recordCategory">
+        <th
+          mat-header-cell
+          *matHeaderCellDef> Категорія
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"> {{element.recordCategory}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="recordService">
-    <th mat-header-cell *matHeaderCellDef> Послуга</th>
-    <td mat-cell *matCellDef="let element"> {{element.recordService}} </td>
-  </ng-container>
+      <ng-container matColumnDef="recordService">
+        <th
+          mat-header-cell
+          *matHeaderCellDef> Послуга
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"> {{element.recordService}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="recordSchedule">
-    <th mat-header-cell *matHeaderCellDef> Час</th>
-    <td mat-cell *matCellDef="let element"> {{element.recordSchedule}} </td>
-  </ng-container>
+      <ng-container matColumnDef="recordSchedule">
+        <th
+          mat-header-cell
+          *matHeaderCellDef> Час
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"> {{element.recordSchedule}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="recordDate">
-    <th mat-header-cell *matHeaderCellDef> Дата</th>
-    <td mat-cell *matCellDef="let element"> {{element.recordDate | date : 'dd-MM-YYYY'}} </td>
-  </ng-container>
+      <ng-container matColumnDef="recordDate">
+        <th
+          mat-header-cell
+          *matHeaderCellDef> Дата
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"> {{element.recordDate | date : 'dd-MM-YYYY'}} </td>
+      </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="['position', 'recordClient', 'recordPhone', 'recordMaster',  'recordCategory', 'recordService',
-  'recordSchedule', 'recordDate']"></tr>
-  <tr mat-row *matRowDef="let row; columns: ['position', 'recordClient','recordPhone', 'recordMaster',  'recordCategory',
-  'recordService', 'recordSchedule', 'recordDate'];"></tr>
-</table>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" [attr.colspan]="recordsColumns.length">Немає даних, що відповідають фільтру</td>
+      </tr>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="recordsColumns; sticky: true">
+      </tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: recordsColumns;">
+      </tr>
+    </table>
+  </div>
+
+  <h1 class="mb-3">Сумарний дохід по кожній категорії</h1>
+  <div class="row mb-3 ">
+    <div class="col-2">
+      <input
+        matInput
+        [matDatepicker]="totalByCategoryStartDatePicker"
+        [(ngModel)]="totalByCategoryStartDate"
+        (click)="totalByCategoryStartDatePicker.open()"
+        (dateChange)="initTotalByCategory()"
+        placeholder="Початкова дата"
+        class="w-100 p-2">
+      <mat-hint>
+        ДД/ММ/РРРР
+      </mat-hint>
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="totalByCategoryStartDatePicker">
+      </mat-datepicker-toggle>
+      <mat-datepicker #totalByCategoryStartDatePicker></mat-datepicker>
+    </div>
+    <div class="col-2">
+      <input
+        matInput
+        [matDatepicker]="totalByCategoryEndDatePicker"
+        [(ngModel)]="totalByCategoryEndDate"
+        (click)="totalByCategoryEndDatePicker.open()"
+        (dateChange)="initTotalByCategory()"
+        placeholder="Кінцева дата"
+        class="w-100 p-2">
+      <mat-hint>
+        ДД/ММ/РРРР
+      </mat-hint>
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="totalByCategoryEndDatePicker">
+      </mat-datepicker-toggle>
+      <mat-datepicker #totalByCategoryEndDatePicker></mat-datepicker>
+    </div>
+  </div>
+  <div class="table-container mat-elevation-z8 w-50 mb-5">
+    <table
+      mat-table
+      [dataSource]="totalByCategory"
+      class="w-100 table-hover">
+
+      <ng-container matColumnDef="position">
+        <th
+          mat-header-cell
+          *matHeaderCellDef> №
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element; let idx = index"> {{idx + 1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="recordCategory">
+        <th
+          mat-header-cell
+          *matHeaderCellDef> Категорія
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"> {{element.recordCategory}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="totalRecordPrice">
+        <th
+          mat-header-cell
+          *matHeaderCellDef> Сума витрат
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"> {{ element.totalRecordPrice | currency : 'UAH' : 'symbol-narrow' : '1.0-0'}} </td>
+      </ng-container>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" [attr.colspan]="totalByCategoryColumns.length">Немає даних, що відповідають фільтру</td>
+      </tr>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="totalByCategoryColumns; sticky: true">
+      </tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: totalByCategoryColumns;">
+      </tr>
+    </table>
+  </div>
+
+  <h1 class="mb-3">Сумарні витрати на послуги по кожному клієнту</h1>
+  <div class="table-container mat-elevation-z8 w-50 mb-5">
+    <table
+      mat-table
+      [dataSource]="totalPriceByClient"
+      class="w-100 table-hover">
+
+      <ng-container matColumnDef="position">
+        <th
+          mat-header-cell
+          *matHeaderCellDef> №
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element; let idx = index"> {{idx + 1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="clientName">
+        <th
+          mat-header-cell
+          *matHeaderCellDef>Клієент
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"> {{element.clientName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th
+          mat-header-cell
+          *matHeaderCellDef> Сума витрат
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"> {{ element.price | currency : 'UAH' : 'symbol-narrow' : '1.0-0'}} </td>
+      </ng-container>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" [attr.colspan]="totalPriceByClientColumns.length">Немає даних, що відповідають фільтру</td>
+      </tr>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="totalPriceByClientColumns; sticky: true">
+      </tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: totalPriceByClientColumns;">
+      </tr>
+    </table>
+  </div>
+
+  <h1 class="mb-3">Кількість візитів кожного клієнта</h1>
+  <div class="table-container mat-elevation-z8 w-50 mb-5">
+    <table
+      mat-table
+      [dataSource]="clientVisits"
+      class="w-100 table-hover">
+
+      <ng-container matColumnDef="position">
+        <th
+          mat-header-cell
+          *matHeaderCellDef> №
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element; let idx = index"> {{idx + 1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="clientName">
+        <th
+          mat-header-cell
+          *matHeaderCellDef>Клієент
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"> {{element.clientName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="clientVisits">
+        <th
+          mat-header-cell
+          *matHeaderCellDef> К-ть візитів
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"> {{ element.clientVisits }} </td>
+      </ng-container>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" [attr.colspan]="clientVisitsColumns.length">Немає даних, що відповідають фільтру</td>
+      </tr>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="clientVisitsColumns; sticky: true">
+      </tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: clientVisitsColumns;">
+      </tr>
+    </table>
+  </div>
+</div>
